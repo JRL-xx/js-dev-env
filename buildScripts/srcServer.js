@@ -16,8 +16,16 @@ app.use(webpack_dev_middleware(compiler, {
   publicPath: config.output.publicPath
 }));
 
-app.use('/', function(req,res) {
+app.get('/', function(req,res) {
   res.sendFile(path.join(__dirname, '../src/index.html'));
+});
+
+app.get('/users', function(req, res) {
+  res.json([
+    {"id": 1, "firstname": "Bob", "lastname": "Smith", "email": "bob@gmail.com"},
+    {"id": 2, "firstname": "Tammy", "lastname": "Norton", "email": "tnorton@yahoo.com"},
+    {"id": 3, "firstname": "Tina", "lastname": "Lee", "email": "lee.tina@hotmail.com"},
+  ]);
 });
 
 app.listen(port, function(err) {

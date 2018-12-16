@@ -2,3 +2,7 @@ body h1 {
   font-family: Sans-Serif, serif;
   color: red;
 }
+
+table tr {
+  padding: 5px;
+}
