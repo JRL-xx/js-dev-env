@@ -3,6 +3,8 @@ body h1 {
   color: red;
 }
 
+/* comment should be stripped in prod */
+
 table tr {
   padding: 5px;
 }

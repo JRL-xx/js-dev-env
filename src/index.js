@@ -1,4 +1,5 @@
 import './index.css';
+
 import {getUsers, deleteUser} from './api/userApi';
 
 getUsers().then(result => {
@@ -15,9 +16,9 @@ getUsers().then(result => {
     </tr>`
   });
 
-  global.document.getElementById('users').innerHTML = usersBody;
+  document.getElementById('users').innerHTML = usersBody;
 
-  const deleteLinks = global.document.getElementsByClassName('deleteUser');
+  const deleteLinks = document.getElementsByClassName('deleteUser');
   Array.from(deleteLinks, link => {
     link.onclick = function(event) {
       const element = event.target;

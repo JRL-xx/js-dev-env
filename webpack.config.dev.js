@@ -1,31 +1,24 @@
-const path = require('path');
+import path from 'path';
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
+export default {
   mode: 'development',
-  devtool: 'inline-source-map',
-  devServer: {
-    noInfo: false,
-  },
   entry: [
     path.resolve(__dirname, 'src/index')
   ],
-  target: 'web',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'src'),
     publicPath: '/'
   },
-  plugins: [],
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
-          }
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env']
         }
       },
       {
@@ -33,5 +26,11 @@ module.exports = {
         use: ['style-loader', 'css-loader']
       }
     ]
-  }
+  },
+  devtool: 'inline-source-map',
+  target: 'web',
+  devServer: {
+    noInfo: false,
+  },
+  plugins: [new HtmlWebpackPlugin({template: 'src/index.html', inject: true })]
 };
